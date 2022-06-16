@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Cliente
+comment1.params=
+comment1.target=Cliente()
+comment2.params=
+comment2.target=java.lang.String\ getNome()
+comment3.params=
+comment3.target=java.lang.String\ getCPF()
+comment4.params=nome
+comment4.target=void\ setNome(java.lang.String)
+comment5.params=cpf
+comment5.target=void\ setCPF(java.lang.String)
+numComments=6
