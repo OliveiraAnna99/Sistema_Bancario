@@ -9,8 +9,21 @@ public class Banco
     {
   
     }
-    
+    //getters
+    public String getNomeFantasia(){
+        return nomeFantasia;
+    }
+    public List<Agencia> getAgencias(){
+        return agencias;
+    }
  
+    //setters
+    public void setNomeFantasia(String nomeFantasia){
+        this.nomeFantasia = nomeFantasia;
+    }
+    public void setAgencias(List<Agencia> agencias){
+        this.agencias = agencias;
+    }
     public double total(){
         return agencias.stream().mapToDouble(s->s.total()).sum();
         
@@ -19,5 +32,7 @@ public class Banco
         agencias.stream().forEach(ag->ag.renderCP());
         return true;
     }
+    
+    
     
 }

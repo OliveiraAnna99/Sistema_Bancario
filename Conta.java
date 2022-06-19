@@ -11,11 +11,12 @@ import javax.swing.*;
 public class Conta
 {
     private Cliente c; 
-    private Agencia ag;
+    //private Agencia ag;
     
     private int codigo;
     private String numero;
     private String tipo;
+    private String numeroTipo;
     private double saldo;
     private double limite;
     private int doc = 1;
@@ -48,11 +49,17 @@ public class Conta
     public Cliente getCliente(){
         return c;
     }
-    public Agencia getAgencia(){
-        return ag;
+    public String getData(){
+        return data;
     }
+    //public Agencia getAgencia(){
+    //    return ag;
+    //}
      public String getNumero(){
         return numero;
+    }
+    public String getNumeroTipo(){
+        return numeroTipo;
     }
     public ArrayList<String> getHistoricoTransacao(){
         return historicoTransacoes;
@@ -80,11 +87,17 @@ public class Conta
     public void setCliente(Cliente c){
         this.c = c;
     }
-    public void setAgencia(Agencia ag){
-        this.ag = ag;
+    public void setData(String data){
+        this.data = data;
     }
+    //public void setAgencia(Agencia ag){
+    //    this.ag = ag;
+    //}
     public void setNumero(String numero){
         this.numero = numero;
+    }
+    public void setNumeroTipo(String numeroTipo){
+        this.numeroTipo = numeroTipo;
     }
     public void setTaxaManutencao(double taxaManutencao){
         this.taxaManutencao = taxaManutencao;
@@ -165,8 +178,8 @@ public class Conta
       
         JLabel saldo = new JLabel(""+ getSaldo());
         JLabel cliente = new JLabel("Cliente:  " + c.getNome());
-        JLabel agencia1 = new JLabel("Agencia:  " + ag.getNumero());
-        JLabel conta1 = new JLabel("Conta:  " + numero);
+        //JLabel agencia1 = new JLabel("Agencia:  " + ag.getNumero());
+        JLabel conta1 = new JLabel("Conta:  " + getNumero());
         JLabel limiteTxt = new JLabel("LIMITE:");
         JLabel limite = new JLabel(" "+ getLimite());
                
@@ -182,7 +195,7 @@ public class Conta
         titulo.setBounds(50, 10, 200, 30);
         traco.setBounds(10, 30, 290, 20);  
         cliente.setBounds(10,50,290, 30);
-        agencia1.setBounds(10,70, 150, 30);
+       // agencia1.setBounds(10,70, 150, 30);
         conta1.setBounds(10,90, 150, 30);
         traco2.setBounds(10, 100, 290, 20);  
         data.setBounds(20, 120, 40, 20);
@@ -198,7 +211,7 @@ public class Conta
         extrato.add(titulo);
         extrato.add(traco);
         extrato.add(cliente);
-        extrato.add(agencia1);
+        //extrato.add(agencia1);
         extrato.add(conta1);
         extrato.add(traco2);
         extrato.add(data);
@@ -212,7 +225,7 @@ public class Conta
         extrato.add(limiteTxt);
         extrato.add(limite);
         
-        if(tipo == "cc"){
+        if(tipo == "Conta Corrente"){
            
             JLabel taxaTxt = new JLabel("TAXA DE MANUTENÇÃO:");
             JLabel taxa = new JLabel("-"+ taxaManutencao);
@@ -221,7 +234,7 @@ public class Conta
             extrato.add(taxaTxt);
             extrato.add(taxa);
         }
-        if(tipo == "cp"){
+        if(tipo == "Conta Poupanca PF"){
            
             JLabel taxaTxt = new JLabel("RENDIMENTO:");
             JLabel taxa = new JLabel("+"+ rendimento);
@@ -247,7 +260,7 @@ public class Conta
     }
     
     public void rendimento(){
-        if(tipo == "cp"){
+        if(tipo == "Conta Poupanca PF"){
             this.saldo += rendimento;
             this.rendimento += rendimento;
         }
